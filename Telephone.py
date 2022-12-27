@@ -32,7 +32,7 @@ CONTACT = StringVar()
 #============================METHODS=====================================
 
 def Database():
-    conn = mysql.connector.connect(host='localhost',user='root',password='lpFC#@23',database='Project')
+    conn = mysql.connector.connect(host='localhost',user='root',password='yashV23',database='Project')
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS `member` (Mem_Id Int(4) PRIMARY KEY NOT NULL AUTO_INCREMENT, Firstname varchar(10), Lastname varchar(10), Gender varchar(10), Age varchar(5), Address varchar(30), Contact varchar(10))")
     cursor.execute("SELECT * FROM `member` ORDER BY `Firstname` ASC")
@@ -47,7 +47,7 @@ def SubmitData():
         result = tkMessAgeBox.showwarning('', 'Please Complete The Required Field', icon="warning")
     else:
         tree.delete(*tree.get_children())
-        conn = mysql.connector.connect(host='localhost',user='root',password='lpFC#@23',database='Project')
+        conn = mysql.connector.connect(host='localhost',user='root',password='yashV23',database='Project')
         cursor = conn.cursor()
         cursor.execute("INSERT INTO `member` (Firstname, Lastname, Gender, Age, Address, Contact) VALUES(%s,%s,%s,%s,%s,%s)", (str(FIRSTNAME.get()), str(LASTNAME.get()), str(GENDER.get()), int(AGE.get()), str(ADDRESS.get()), str(CONTACT.get())))
         conn.commit()
@@ -69,7 +69,7 @@ def UpdateData():
        result = tkMessAgeBox.showwarning('', 'Please Complete The Required Field', icon="warning")
     else:
         tree.delete(*tree.get_children())
-        conn = mysql.connector.connect(host='localhost',user='root',password='lpFC#@23',database='Project')
+        conn = mysql.connector.connect(host='localhost',user='root',password='yashV23',database='Project')
         cursor = conn.cursor()
         cursor.execute("UPDATE `member` SET `Firstname` = %s, `Lastname` = %s, `Gender` =%s, `Age` = %s,  `Address` = %s, `Contact` = %s WHERE `Mem_Id` = %s", (str(FIRSTNAME.get()), str(LASTNAME.get()), str(GENDER.get()), str(AGE.get()), str(ADDRESS.get()), str(CONTACT.get()), int(Mem_Id)))
         conn.commit()
@@ -172,7 +172,7 @@ def DeleteData():
             contents =(tree.item(curItem))
             selecteditem = contents['values']
             tree.delete(curItem)
-            conn = mysql.connector.connect(host='localhost',user='root',password='lpFC#@23',database='Project')
+            conn = mysql.connector.connect(host='localhost',user='root',password='yashV23',database='Project')
             cursor = conn.cursor()
             cursor.execute("DELETE FROM `member` WHERE `Mem_Id` = %d" % selecteditem[0])
             conn.commit()
@@ -303,7 +303,7 @@ if __name__ == '__main__':
     Database()
     root.mainloop()
     
-mydb=mysql.connector.connect(host="localhost",user="root",passwd="lpFC#@23",database="Project")
+mydb=mysql.connector.connect(host="localhost",user="root",passwd="yashV23",database="Project")
 mycursor=mydb.cursor()
 mycursor.execute("select * from member")
 result=mycursor.fetchall()
